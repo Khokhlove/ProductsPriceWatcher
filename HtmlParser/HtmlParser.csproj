@@ -70,6 +70,10 @@
     <Compile Include="HTMLParser.Designer.cs">
       <DependentUpon>HTMLParser.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\AvelotShop.cs" />
+    <Compile Include="src\CitilinkShop.cs" />
+    <Compile Include="src\Product.cs" />
+    <Compile Include="src\Shop.cs" />
     <Compile Include="ProductEditor.cs">
       <SubType>Form</SubType>
     </Compile>
