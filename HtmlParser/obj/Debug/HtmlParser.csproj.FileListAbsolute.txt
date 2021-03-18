@@ -1,0 +1,16 @@
+C:\Users\alexe\source\repos\HtmlParser\HtmlParser\bin\Debug\HtmlParser.exe.config
+C:\Users\alexe\source\repos\HtmlParser\HtmlParser\bin\Debug\HtmlParser.exe
+C:\Users\alexe\source\repos\HtmlParser\HtmlParser\bin\Debug\HtmlParser.pdb
+C:\Users\alexe\source\repos\HtmlParser\HtmlParser\bin\Debug\CsQuery.dll
+C:\Users\alexe\source\repos\HtmlParser\HtmlParser\bin\Debug\CsQuery.xml
+C:\Users\alexe\source\repos\HtmlParser\HtmlParser\obj\Debug\HtmlParser.csprojAssemblyReference.cache
+C:\Users\alexe\source\repos\HtmlParser\HtmlParser\obj\Debug\HtmlParser.Properties.Resources.resources
+C:\Users\alexe\source\repos\HtmlParser\HtmlParser\obj\Debug\HtmlParser.csproj.GenerateResource.cache
+C:\Users\alexe\source\repos\HtmlParser\HtmlParser\obj\Debug\HtmlParser.csproj.CoreCompileInputs.cache
+C:\Users\alexe\source\repos\HtmlParser\HtmlParser\obj\Debug\HtmlParser.csproj.CopyComplete
+C:\Users\alexe\source\repos\HtmlParser\HtmlParser\obj\Debug\HtmlParser.exe
+C:\Users\alexe\source\repos\HtmlParser\HtmlParser\obj\Debug\HtmlParser.pdb
+C:\Users\alexe\source\repos\HtmlParser\HtmlParser\obj\Debug\HtmlParser.HTMLParser.resources
+C:\Users\alexe\source\repos\HtmlParser\HtmlParser\obj\Debug\HtmlParser.ProductEditor.resources
+C:\Users\alexe\source\repos\HtmlParser\HtmlParser\bin\Debug\Database1.mdf
+C:\Users\alexe\source\repos\HtmlParser\HtmlParser\bin\Debug\Database1_log.ldf
