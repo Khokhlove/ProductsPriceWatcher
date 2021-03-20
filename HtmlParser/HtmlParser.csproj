@@ -64,6 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBconnection.cs" />
+    <Compile Include="DBObects.cs" />
+    <Compile Include="DBShop.cs" />
     <Compile Include="HTMLParser.cs">
       <SubType>Form</SubType>
     </Compile>

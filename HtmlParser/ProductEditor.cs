@@ -51,17 +51,7 @@ namespace HtmlParser
                 SqlCommand command = new SqlCommand(sqlExpression, connection);
 
             }
-            string objectName = o;
-            string urlSite = u;
-            string siteId = i;
-            SqlConnection db = new SqlConnection(@"C:\Users\alexe\source\repos\HtmlParser\HtmlParser\Database1.mdf");
-            db.Open();
 
-            // command = new SqlCommand("INSERT * INTO Object (Object, UrlSite, SiteId) VALUES(@objectName, @urlSite, @siteId)");
-
-            int age = 23;
-            string name = "T',10);INSERT INTO Users (Name, Age) VALUES('H";
-            string sqlExpression = "INSERT INTO Users (Name, Age) VALUES (@name, @age)";
-           
+        }
     }
 }
