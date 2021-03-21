@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Data.SqlClient;
 
 namespace HtmlParser
@@ -18,7 +19,9 @@ namespace HtmlParser
 
         public static string GetConnectionString()
         {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\Database1.mdf;Integrated Security=True";
+            string fullPath = Path.GetFullPath(@"..\..\");
+            string solutionPath = $"{fullPath}Database1.mdf";
+            string connectionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={solutionPath};Integrated Security=True;";
             return connectionString;
         }
     }
