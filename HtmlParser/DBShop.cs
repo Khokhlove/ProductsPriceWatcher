@@ -7,25 +7,36 @@ namespace HtmlParser
 {
     public static class DBShop
     {
-        //public static List<string[]> GetShop()
-        //{
-        //    List<string[]> data = new List<string[]>();
-        //    using (SqlConnection con = DB.GetConnection())
-        //    {
-        //        con.Open();
+        public static List<string[]> GetShopById(int id)
+        {
+            List<string[]> data = new List<string[]>();
+            using (SqlConnection con = DB.GetConnection())
+            {
+                try
+                {
+                    con.Open();
 
-        //        string sqlExpression = "SELECT * FROM Shop";
+                    string sqlExpression = $"SELECT * FROM Shop WHERE NameId = '{id}'";
 
-        //        SqlCommand command = new SqlCommand(sqlExpression, con);
+                    SqlCommand command = new SqlCommand(sqlExpression, con);
 
-        //        SqlDataReader reader = command.ExecuteReader();
+                    SqlDataReader reader = command.ExecuteReader();
 
-        //        while (reader.Read())
-        //        {
-        //            data.Add(new string[] { reader[0].ToString(), reader[1].ToString() });
-        //        }
-        //        con.Close();
-        //    }
+                    while (reader.Read())
+                    {
+                        data.Add(new string[] { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString() });
+                    }
+                    con.Close();
+
+                    return data;
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show(e.Message, "Ошибка!");
+                    return null;
+                }
+            }
+        }
 
         public static bool SetShop(string[] str)
         {

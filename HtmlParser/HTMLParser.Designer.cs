@@ -68,6 +68,9 @@
             this.informationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.database1DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.informationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.database1DataSet = new HtmlParser.Database1DataSet();
+            this.objectBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.objectTableAdapter = new HtmlParser.Database1DataSetTableAdapters.ObjectTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -79,6 +82,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Pars
@@ -89,17 +94,19 @@
             this.Pars.TabIndex = 0;
             this.Pars.Text = "Проверить цены";
             this.Pars.UseVisualStyleBackColor = true;
-            this.Pars.Click += new System.EventHandler(this.Pars_Click);
+            this.Pars.Click += new System.EventHandler(this.Parse_Click);
             // 
             // comboBox1
             // 
+            this.comboBox1.DataSource = this.objectBindingSource;
+            this.comboBox1.DisplayMember = "Object";
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Выберите данные"});
             this.comboBox1.Location = new System.Drawing.Point(602, 6);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(175, 21);
             this.comboBox1.TabIndex = 4;
+            this.comboBox1.ValueMember = "Object";
+            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
             // dataGridView1
             // 
@@ -409,6 +416,20 @@
             // 
             this.informationBindingSource.DataMember = "Information";
             // 
+            // database1DataSet
+            // 
+            this.database1DataSet.DataSetName = "Database1DataSet";
+            this.database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // objectBindingSource
+            // 
+            this.objectBindingSource.DataMember = "Object";
+            this.objectBindingSource.DataSource = this.database1DataSet;
+            // 
+            // objectTableAdapter
+            // 
+            this.objectTableAdapter.ClearBeforeFill = true;
+            // 
             // HTMLParser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,6 +456,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,6 +508,9 @@
         private System.Windows.Forms.TextBox tBLink;
         private System.Windows.Forms.TextBox tBShop;
         private System.Windows.Forms.TextBox tBObject;
+        private Database1DataSet database1DataSet;
+        private System.Windows.Forms.BindingSource objectBindingSource;
+        private Database1DataSetTableAdapters.ObjectTableAdapter objectTableAdapter;
     }
 }
 

@@ -17,5 +17,21 @@ namespace HtmlParser
         }
 
         public abstract int GetPrice();
+
+        public static Shop GetShop(string[] shop)
+        {
+            string shopName = shop[2].Trim().ToLower();
+            string url = shop[3];
+
+            switch (shopName)
+            {
+                case "citilink":
+                    return new CitilinkShop(url);
+                case "avelot":
+                    return new AvelotShop(url);
+                default:
+                    return null;
+            }
+        }
     }
 }

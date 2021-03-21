@@ -16,27 +16,31 @@ namespace HtmlParser
     public partial class HTMLParser : Form
     {
         HashSet<int> rowIds = new HashSet<int>();
+        List<string[]> shops = new List<string[]>();
+
         public HTMLParser()
         {
             InitializeComponent();
         }
 
-        private void Pars_Click(object sender, EventArgs e)
+        private void Parse_Click(object sender, EventArgs e)
         {
-            //CQ citilinkDom = CQ.CreateFromUrl("https://www.citilink.ru/product/videokarta-msi-nvidia-geforce-gtx-1660-gtx-1660-ventus-xs-6g-oc-6gb-gd-1133566/");
-            //CQ citilinPriceNode = citilinkDom[".ProductHeaderprice-default_current-price"];
-            //if (citilinPriceNode != null)
-            //{
-            //    int price = Convert.ToInt32(citilinPriceNode.Text().Trim().Replace(" ", ""));
-            //    label1.Text = price.ToString();
-            //}
-            CQ avelotDom = CQ.CreateFromUrl("https://avelot.ru/videokarty/262003-videokarta-gigabyte-geforce-gtx1650-4gb-gddr5128bit3hdmidp-gv-n1650gaming-oc-4gdret.html?search_query=gtx1650&results=26");
-            CQ avelotPriceNode = avelotDom["#our_price_display"];
-            if (avelotPriceNode != null)
+            if (dataGridView1.Rows.Count > 0) dataGridView1.Rows.Clear();
+            List<Shop> shops = new List<Shop>();
+            this.shops.ForEach(s =>
             {
-                int price = Convert.ToInt32(avelotPriceNode.Attr("content"));
-                // label2.Text = price.ToString();
-            }
+                Shop shop = Shop.GetShop(s);
+                if (shop != null)
+                {
+                    shops.Add(shop);
+                }
+            });
+
+            shops.ForEach(s =>
+            {
+                int price = s.GetPrice();
+                dataGridView1.Rows.Add(new string[] { s.shopName, price.ToString(), DateTime.Now.ToString("G") });
+            });
         }
 
         private void ВыходToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,6 +60,8 @@ namespace HtmlParser
 
         private void HTMLParser_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "database1DataSet.Object". При необходимости она может быть перемещена или удалена.
+            this.objectTableAdapter.Fill(this.database1DataSet.Object);
 
         }
 
@@ -96,7 +102,7 @@ namespace HtmlParser
                 foreach (int r in rowIds)
                 {
                     string[] Cells = ToArray(dataGridView2.Rows[r]);
-                    DBObects.SetObject(Cells);
+                    DBObject.SetObject(Cells);
                     DBShop.SetShop(Cells);   
                 }
                     MessageBox.Show("База обновлена!", "Выполнено");
@@ -136,11 +142,11 @@ namespace HtmlParser
 
             void AvailibiltyCheck()
             {
-                string[] str = DBObects.GetObjectByName(tBO);
+                string[] str = DBObject.GetObjectByName(tBO);
                 if (str == null)
                 {
-                    if(DBObects.AddObject(new string[] { tBO }))
-                        str = DBObects.GetObjectByName(tBO);
+                    if(DBObject.AddObject(new string[] { tBO }))
+                        str = DBObject.GetObjectByName(tBO);
                 }
 
                 if (DBShop.AddShop(new string[] { str[0], tBS, tBL }))
@@ -151,6 +157,27 @@ namespace HtmlParser
         {
             if (e.RowIndex >= 0)
                 rowIds.Add(e.RowIndex);
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            string name = comboBox1.Text;
+            string[] obj = DBObject.GetObjectByName(name);
+
+            if (obj != null)
+            {
+                int id = Convert.ToInt32(obj[0]);
+                shops = DBShop.GetShopById(id);
+                if (shops != null)
+                {
+                    shops.ForEach(el => listBox1.Items.Add(el[2]));
+                }
+                else
+                {
+                    MessageBox.Show("Перечень магазинов для данного товара не найден!", "Ошибка!");
+                }
+            }
         }
     }
 }

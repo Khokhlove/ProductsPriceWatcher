@@ -5,7 +5,7 @@ using System;
 
 namespace HtmlParser
 {
-    public static class DBObects
+    public static class DBObject
     {
         public static List<string[]> GetObjects()
         {
