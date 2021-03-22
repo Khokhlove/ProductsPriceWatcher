@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HTMLParser));
             this.ButtonParse = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.objectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.database1DataSet2 = new HtmlParser.Database1DataSet2();
             this.objectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.database1DataSet = new HtmlParser.Database1DataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -78,10 +80,10 @@
             this.informationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.objectTableAdapter = new HtmlParser.Database1DataSetTableAdapters.ObjectTableAdapter();
             this.informationTableAdapter = new HtmlParser.Database1DataSet1TableAdapters.InformationTableAdapter();
-            this.database1DataSet2 = new HtmlParser.Database1DataSet2();
-            this.objectBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.objectTableAdapter1 = new HtmlParser.Database1DataSet2TableAdapters.ObjectTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -97,8 +99,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,13 +110,13 @@
             this.ButtonParse.TabIndex = 0;
             this.ButtonParse.Text = "Проверить цены";
             this.ButtonParse.UseVisualStyleBackColor = true;
-            this.ButtonParse.Click += new System.EventHandler(this.Pars_Click);
+            this.ButtonParse.Click += new System.EventHandler(this.Parse_Click);
             // 
             // comboBox1
             // 
             this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.comboBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.comboBox1.DataSource = this.objectBindingSource1;
+            this.comboBox1.DataSource = this.objectBindingSource;
             this.comboBox1.DisplayMember = "Object";
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -127,7 +127,17 @@
             this.comboBox1.Size = new System.Drawing.Size(175, 21);
             this.comboBox1.TabIndex = 4;
             this.comboBox1.ValueMember = "Object";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
+            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
+            // 
+            // objectBindingSource1
+            // 
+            this.objectBindingSource1.DataMember = "Object";
+            this.objectBindingSource1.DataSource = this.database1DataSet2;
+            // 
+            // database1DataSet2
+            // 
+            this.database1DataSet2.DataSetName = "Database1DataSet2";
+            this.database1DataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // objectBindingSource
             // 
@@ -531,16 +541,6 @@
             // 
             this.informationTableAdapter.ClearBeforeFill = true;
             // 
-            // database1DataSet2
-            // 
-            this.database1DataSet2.DataSetName = "Database1DataSet2";
-            this.database1DataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // objectBindingSource1
-            // 
-            this.objectBindingSource1.DataMember = "Object";
-            this.objectBindingSource1.DataSource = this.database1DataSet2;
-            // 
             // objectTableAdapter1
             // 
             this.objectTableAdapter1.ClearBeforeFill = true;
@@ -574,6 +574,8 @@
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Transparent;
             this.Load += new System.EventHandler(this.HTMLParser_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -592,8 +594,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.informationBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

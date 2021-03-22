@@ -195,11 +195,5 @@ namespace HtmlParser
             else
                 MessageBox.Show("Не ожидал ошибки? Выбери строку для удаления, придурок.", "Ошибка!");
         }
-        void CompletingList()
-        {
-            string obj = comboBox1.Text;
-            string[] str = DBObects.GetObjectByName(obj);
-            l = DBShop.GetShopById(Convert.ToInt32(str[0]));
-        }
     }
 }
