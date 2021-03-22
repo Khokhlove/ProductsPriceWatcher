@@ -38,7 +38,7 @@ namespace HtmlParser
             }
         }
 
-        public static bool SetShop(string[] str)
+            public static bool SetShop(string[] str)
         {
             using (SqlConnection con = DB.GetConnection())
             {
@@ -71,6 +71,29 @@ namespace HtmlParser
                     con.Open();
 
                     string sqlExpression = $"INSERT INTO Shop (NameId,NameShop,Url) VALUES ('{str[0]}', '{str[1]}','{str[2]}')";
+
+                    SqlCommand command = new SqlCommand(sqlExpression, con);
+
+                    SqlDataReader reader = command.ExecuteReader();
+                    con.Close();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Ошибка");
+                    return false;
+                }
+            }
+        }
+        public static bool DeleteShopByName(string shopName)
+        {
+            using (SqlConnection con = DB.GetConnection())
+            {
+                try
+                {
+                    con.Open();
+
+                    string sqlExpression = $"DELETE FROM Shop WHERE NameShop = '{shopName}'";
 
                     SqlCommand command = new SqlCommand(sqlExpression, con);
 

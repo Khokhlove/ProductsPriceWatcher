@@ -1,0 +1,16 @@
+D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\bin\Release\Database1.mdf
+D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\bin\Release\Database1_log.ldf
+D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\bin\Release\HtmlParser.exe.config
+D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\bin\Release\HtmlParser.exe
+D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\bin\Release\HtmlParser.pdb
+D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\bin\Release\CsQuery.dll
+D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\bin\Release\CsQuery.xml
+D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\obj\Release\HtmlParser.csprojAssemblyReference.cache
+D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\obj\Release\HtmlParser.HTMLParser.resources
+D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\obj\Release\HtmlParser.ProductEditor.resources
+D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\obj\Release\HtmlParser.Properties.Resources.resources
+D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\obj\Release\HtmlParser.csproj.GenerateResource.cache
+D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\obj\Release\HtmlParser.csproj.CoreCompileInputs.cache
+D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\obj\Release\HtmlParser.csproj.CopyComplete
+D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\obj\Release\HtmlParser.exe
+D:\RepositoryVisualStudio\HtmlParser\Khokhlove\ProductsPriceWatcher\HtmlParser\obj\Release\HtmlParser.pdb

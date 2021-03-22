@@ -62,7 +62,6 @@ namespace HtmlParser
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "database1DataSet.Object". При необходимости она может быть перемещена или удалена.
             this.objectTableAdapter.Fill(this.database1DataSet.Object);
-
         }
 
         private void LoadBD_Click(object sender, EventArgs e)
@@ -178,6 +177,29 @@ namespace HtmlParser
                     MessageBox.Show("Перечень магазинов для данного товара не найден!", "Ошибка!");
                 }
             }
+        }
+
+        private void ButtonDelete_Click(object sender, EventArgs e)
+        {
+            var rows = dataGridView2.SelectedRows;
+            if (rows.Count > 0)
+            {
+                for (int i = 0; i < rows.Count; i++)
+                {
+                    string shopName = rows[i].Cells[4].Value.ToString();
+                    DBShop.DeleteShopByName(shopName);
+                }
+                InitPivotTable();
+                MessageBox.Show("Магазин(ы)  удален(ы)!", "Выполнено");
+            }
+            else
+                MessageBox.Show("Не ожидал ошибки? Выбери строку для удаления, придурок.", "Ошибка!");
+        }
+        void CompletingList()
+        {
+            string obj = comboBox1.Text;
+            string[] str = DBObects.GetObjectByName(obj);
+            l = DBShop.GetShopById(Convert.ToInt32(str[0]));
         }
     }
 }
