@@ -53,7 +53,9 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -82,20 +84,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database1DataSet2.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DBconnection.cs" />
-    <Compile Include="DBObject.cs" />
-    <Compile Include="DBInformation.cs" />
-    <Compile Include="DBShop.cs" />
+    <Compile Include="src\DB\DBconnection.cs" />
+    <Compile Include="src\DB\DBObject.cs" />
+    <Compile Include="src\DB\DBInformation.cs" />
+    <Compile Include="src\DB\DBShop.cs" />
     <Compile Include="HTMLParser.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HTMLParser.Designer.cs">
       <DependentUpon>HTMLParser.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\AvelotShop.cs" />
-    <Compile Include="src\CitilinkShop.cs" />
-    <Compile Include="src\Product.cs" />
-    <Compile Include="src\Shop.cs" />
+    <Compile Include="src\Shops\AvelotShop.cs" />
+    <Compile Include="src\Shops\CitilinkShop.cs" />
+    <Compile Include="src\Shops\Product.cs" />
+    <Compile Include="src\Shops\Shop.cs" />
     <Compile Include="ProductEditor.cs">
       <SubType>Form</SubType>
     </Compile>

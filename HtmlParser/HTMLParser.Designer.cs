@@ -79,12 +79,6 @@
             this.Url = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.informationBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.database1DataSet1 = new HtmlParser.Database1DataSet1();
             this.informationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -94,6 +88,12 @@
             this.informationTableAdapter = new HtmlParser.Database1DataSet1TableAdapters.InformationTableAdapter();
             this.objectTableAdapter1 = new HtmlParser.Database1DataSet2TableAdapters.ObjectTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Товар = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Компания = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Цена = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ДатаЗапроса = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ссылка = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource1)).BeginInit();
@@ -133,8 +133,6 @@
             // 
             this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.comboBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.comboBox1.DataSource = this.objectBindingSource;
-            this.comboBox1.DisplayMember = "Object";
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox1.ForeColor = System.Drawing.SystemColors.Control;
@@ -143,7 +141,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(175, 21);
             this.comboBox1.TabIndex = 4;
-            this.comboBox1.ValueMember = "Object";
             this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
             // objectBindingSource
@@ -292,6 +289,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(797, 426);
             this.tabControl1.TabIndex = 9;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -325,7 +323,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1083, 400);
+            this.tabPage2.Size = new System.Drawing.Size(789, 400);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Обновление БД";
             // 
@@ -545,7 +543,6 @@
             // 
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.AutoGenerateColumns = false;
             this.dataGridView3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
@@ -557,13 +554,12 @@
             this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5});
-            this.dataGridView3.DataSource = this.informationBindingSource2;
+            this.id,
+            this.Товар,
+            this.Компания,
+            this.Цена,
+            this.ДатаЗапроса,
+            this.Ссылка});
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -578,58 +574,6 @@
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.Size = new System.Drawing.Size(789, 400);
             this.dataGridView3.TabIndex = 0;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Object";
-            this.dataGridViewTextBoxColumn1.FillWeight = 200F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Товар";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 200;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "NameSite";
-            this.dataGridViewTextBoxColumn2.FillWeight = 200F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Название магазина";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 200;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Price";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Цена";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "DateRequest";
-            this.dataGridViewTextBoxColumn4.FillWeight = 200F;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Дата запроса";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 200;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Site";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Сыллка";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // informationBindingSource2
             // 
@@ -668,6 +612,43 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 432);
             this.panel1.TabIndex = 11;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // Товар
+            // 
+            this.Товар.HeaderText = "Товар";
+            this.Товар.Name = "Товар";
+            this.Товар.ReadOnly = true;
+            // 
+            // Компания
+            // 
+            this.Компания.HeaderText = "Компания";
+            this.Компания.Name = "Компания";
+            this.Компания.ReadOnly = true;
+            // 
+            // Цена
+            // 
+            this.Цена.HeaderText = "Цена";
+            this.Цена.Name = "Цена";
+            this.Цена.ReadOnly = true;
+            // 
+            // ДатаЗапроса
+            // 
+            this.ДатаЗапроса.HeaderText = "Дата запроса";
+            this.ДатаЗапроса.Name = "ДатаЗапроса";
+            this.ДатаЗапроса.ReadOnly = true;
+            // 
+            // Ссылка
+            // 
+            this.Ссылка.HeaderText = "Ссылка";
+            this.Ссылка.Name = "Ссылка";
+            this.Ссылка.ReadOnly = true;
             // 
             // HTMLParser
             // 
@@ -769,12 +750,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NameId;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameShop;
         private System.Windows.Forms.DataGridViewTextBoxColumn Url;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Товар;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Компания;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Цена;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ДатаЗапроса;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ссылка;
     }
 }
 

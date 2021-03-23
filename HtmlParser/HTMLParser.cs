@@ -21,6 +21,8 @@ namespace HtmlParser
         public HTMLParser()
         {
             InitializeComponent();
+
+            InitSearchTab();
         }
 
         private void Parse_Click(object sender, EventArgs e)
@@ -69,10 +71,10 @@ namespace HtmlParser
 
         private void LoadBD_Click(object sender, EventArgs e)
         {
-            InitPivotTable();
+            SetPivotTable();
         }
 
-        void InitPivotTable()
+        void SetPivotTable()
         {
             DataGridView data = dataGridView2;
 
@@ -105,20 +107,20 @@ namespace HtmlParser
                 {
                     string[] Cells = ToArray(dataGridView2.Rows[r]);
                     DBObject.SetObject(Cells);
-                    DBShop.SetShop(Cells);   
+                    DBShop.SetShop(Cells);
                 }
-                    MessageBox.Show("База обновлена!", "Выполнено");
-                    rowIds.Clear();
+                MessageBox.Show("База обновлена!", "Выполнено");
+                rowIds.Clear();
             }
             catch
             {
                 return;
             }
 
-            string[] ToArray (DataGridViewRow row)
+            string[] ToArray(DataGridViewRow row)
             {
                 string[] rowCells = new string[row.Cells.Count];
-                for(int i = 0; i < row.Cells.Count; i++)
+                for (int i = 0; i < row.Cells.Count; i++)
                 {
                     rowCells[i] = row.Cells[i].Value.ToString();
                 }
@@ -137,17 +139,17 @@ namespace HtmlParser
                 AvailibiltyCheck();
                 tBShop.Text = "";
                 tBLink.Text = "";
-                InitPivotTable();
+                SetPivotTable();
             }
             else
-                MessageBox.Show("Заполните все поля дибилы!","Ошибка");
+                MessageBox.Show("Заполните все поля дибилы!", "Ошибка");
 
             void AvailibiltyCheck()
             {
                 string[] str = DBObject.GetObjectByName(tBO);
                 if (str == null)
                 {
-                    if(DBObject.AddObject(new string[] { tBO }))
+                    if (DBObject.AddObject(new string[] { tBO }))
                         str = DBObject.GetObjectByName(tBO);
                 }
 
@@ -192,12 +194,51 @@ namespace HtmlParser
                     string shopName = rows[i].Cells[4].Value.ToString();
                     DBShop.DeleteShopByName(shopName);
                 }
-                InitPivotTable();
+                SetPivotTable();
                 MessageBox.Show("Магазин(ы)  удален(ы)!", "Выполнено");
             }
             else
                 MessageBox.Show("Не ожидал ошибки? Выбери строку для удаления, придурок.", "Ошибка!");
         }
 
+        void InitSearchTab()
+        {
+            SetProductsComboBox();
+
+            void SetProductsComboBox()
+            {
+                if (comboBox1.Items.Count > 0) comboBox1.Items.Clear();
+                List<string[]> products = DBObject.GetObjects();
+
+                products.ForEach(p => comboBox1.Items.Add(p[1]));
+            }
+        }
+
+        void InitUpdateDBTab()
+        {
+            SetPivotTable();
+        }
+
+        void InitHistoryTab()
+        {
+            if (dataGridView3.Rows.Count > 0) dataGridView3.Rows.Clear();
+            List<string[]> history = DBInformation.GetHistory();
+
+            history.ForEach(h => dataGridView3.Rows.Add(h));
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Action[] tabs = new Action[]
+            {
+                InitSearchTab,
+                InitUpdateDBTab,
+                InitHistoryTab
+            };
+
+            int i = tabControl1.SelectedIndex;
+
+            if (i < tabs.Length) tabs[i].Invoke();
+        }
     }
 }
