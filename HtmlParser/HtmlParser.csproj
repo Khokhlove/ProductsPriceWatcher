@@ -84,6 +84,7 @@
     </Compile>
     <Compile Include="DBconnection.cs" />
     <Compile Include="DBObject.cs" />
+    <Compile Include="DBInformation.cs" />
     <Compile Include="DBShop.cs" />
     <Compile Include="HTMLParser.cs">
       <SubType>Form</SubType>

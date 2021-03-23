@@ -38,9 +38,12 @@ namespace HtmlParser
 
             shops.ForEach(s =>
             {
+                DateTime date = DateTime.Now;
                 int price = s.GetPrice();
-                dataGridView1.Rows.Add(new string[] { s.shopName, price.ToString(), DateTime.Now.ToString("G") });
+                dataGridView1.Rows.Add(new string[] { s.shopName, price.ToString(), date.ToString("G") });
+                DBInformation.AddInformation(new string[] { comboBox1.Text, s.shopName, price.ToString(), date.ToString("yyyy-MM-dd HH:mm:ss"), shops[1].ToString() });
             });
+
         }
 
         private void ВыходToolStripMenuItem_Click(object sender, EventArgs e)
@@ -195,5 +198,6 @@ namespace HtmlParser
             else
                 MessageBox.Show("Не ожидал ошибки? Выбери строку для удаления, придурок.", "Ошибка!");
         }
+
     }
 }

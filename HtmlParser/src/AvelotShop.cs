@@ -5,7 +5,7 @@ namespace HtmlParser
 {
     public class AvelotShop : Shop
     {
-        public AvelotShop(string link) : base("Авелот", link) { }
+        public AvelotShop(string link) : base("Avelot", link) { }
 
         public override int GetPrice()
         {

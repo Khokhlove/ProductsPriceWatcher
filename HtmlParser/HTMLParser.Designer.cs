@@ -79,6 +79,12 @@
             this.Url = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.informationBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.database1DataSet1 = new HtmlParser.Database1DataSet1();
             this.informationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -88,12 +94,6 @@
             this.informationTableAdapter = new HtmlParser.Database1DataSet1TableAdapters.InformationTableAdapter();
             this.objectTableAdapter1 = new HtmlParser.Database1DataSet2TableAdapters.ObjectTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource1)).BeginInit();
@@ -277,7 +277,7 @@
             this.выходToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.выходToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
             // 
@@ -325,7 +325,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(789, 400);
+            this.tabPage2.Size = new System.Drawing.Size(1083, 400);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Обновление БД";
             // 
@@ -579,44 +579,6 @@
             this.dataGridView3.Size = new System.Drawing.Size(789, 400);
             this.dataGridView3.TabIndex = 0;
             // 
-            // informationBindingSource2
-            // 
-            this.informationBindingSource2.DataMember = "Information";
-            this.informationBindingSource2.DataSource = this.database1DataSet1;
-            // 
-            // database1DataSet1
-            // 
-            this.database1DataSet1.DataSetName = "Database1DataSet1";
-            this.database1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // informationBindingSource1
-            // 
-            this.informationBindingSource1.DataMember = "Information";
-            // 
-            // informationBindingSource
-            // 
-            this.informationBindingSource.DataMember = "Information";
-            // 
-            // objectTableAdapter
-            // 
-            this.objectTableAdapter.ClearBeforeFill = true;
-            // 
-            // informationTableAdapter
-            // 
-            this.informationTableAdapter.ClearBeforeFill = true;
-            // 
-            // objectTableAdapter1
-            // 
-            this.objectTableAdapter1.ClearBeforeFill = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.tabControl1);
-            this.panel1.Location = new System.Drawing.Point(0, 27);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 432);
-            this.panel1.TabIndex = 11;
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -668,6 +630,44 @@
             this.dataGridViewTextBoxColumn5.HeaderText = "Сыллка";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // informationBindingSource2
+            // 
+            this.informationBindingSource2.DataMember = "Information";
+            this.informationBindingSource2.DataSource = this.database1DataSet1;
+            // 
+            // database1DataSet1
+            // 
+            this.database1DataSet1.DataSetName = "Database1DataSet1";
+            this.database1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // informationBindingSource1
+            // 
+            this.informationBindingSource1.DataMember = "Information";
+            // 
+            // informationBindingSource
+            // 
+            this.informationBindingSource.DataMember = "Information";
+            // 
+            // objectTableAdapter
+            // 
+            this.objectTableAdapter.ClearBeforeFill = true;
+            // 
+            // informationTableAdapter
+            // 
+            this.informationTableAdapter.ClearBeforeFill = true;
+            // 
+            // objectTableAdapter1
+            // 
+            this.objectTableAdapter1.ClearBeforeFill = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.tabControl1);
+            this.panel1.Location = new System.Drawing.Point(0, 27);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(800, 432);
+            this.panel1.TabIndex = 11;
             // 
             // HTMLParser
             // 
