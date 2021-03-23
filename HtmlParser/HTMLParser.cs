@@ -168,7 +168,7 @@ namespace HtmlParser
             {
                 int id = Convert.ToInt32(obj[0]);
                 shops = DBShop.GetShopById(id);
-                if (shops != null)
+                if (shops.Count != 0)
                 {
                     shops.ForEach(el => listBox1.Items.Add(el[2]));
                 }
