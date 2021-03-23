@@ -79,6 +79,12 @@
             this.Url = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Товар = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Компания = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Цена = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ДатаЗапроса = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ссылка = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.informationBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.database1DataSet1 = new HtmlParser.Database1DataSet1();
             this.informationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -88,12 +94,6 @@
             this.informationTableAdapter = new HtmlParser.Database1DataSet1TableAdapters.InformationTableAdapter();
             this.objectTableAdapter1 = new HtmlParser.Database1DataSet2TableAdapters.ObjectTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Товар = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Компания = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Цена = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ДатаЗапроса = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ссылка = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource1)).BeginInit();
@@ -575,6 +575,43 @@
             this.dataGridView3.Size = new System.Drawing.Size(789, 400);
             this.dataGridView3.TabIndex = 0;
             // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // Товар
+            // 
+            this.Товар.HeaderText = "Товар";
+            this.Товар.Name = "Товар";
+            this.Товар.ReadOnly = true;
+            // 
+            // Компания
+            // 
+            this.Компания.HeaderText = "Компания";
+            this.Компания.Name = "Компания";
+            this.Компания.ReadOnly = true;
+            // 
+            // Цена
+            // 
+            this.Цена.HeaderText = "Цена";
+            this.Цена.Name = "Цена";
+            this.Цена.ReadOnly = true;
+            // 
+            // ДатаЗапроса
+            // 
+            this.ДатаЗапроса.HeaderText = "Дата запроса";
+            this.ДатаЗапроса.Name = "ДатаЗапроса";
+            this.ДатаЗапроса.ReadOnly = true;
+            // 
+            // Ссылка
+            // 
+            this.Ссылка.HeaderText = "Ссылка";
+            this.Ссылка.Name = "Ссылка";
+            this.Ссылка.ReadOnly = true;
+            // 
             // informationBindingSource2
             // 
             this.informationBindingSource2.DataMember = "Information";
@@ -613,62 +650,22 @@
             this.panel1.Size = new System.Drawing.Size(800, 432);
             this.panel1.TabIndex = 11;
             // 
-            // id
-            // 
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // Товар
-            // 
-            this.Товар.HeaderText = "Товар";
-            this.Товар.Name = "Товар";
-            this.Товар.ReadOnly = true;
-            // 
-            // Компания
-            // 
-            this.Компания.HeaderText = "Компания";
-            this.Компания.Name = "Компания";
-            this.Компания.ReadOnly = true;
-            // 
-            // Цена
-            // 
-            this.Цена.HeaderText = "Цена";
-            this.Цена.Name = "Цена";
-            this.Цена.ReadOnly = true;
-            // 
-            // ДатаЗапроса
-            // 
-            this.ДатаЗапроса.HeaderText = "Дата запроса";
-            this.ДатаЗапроса.Name = "ДатаЗапроса";
-            this.ДатаЗапроса.ReadOnly = true;
-            // 
-            // Ссылка
-            // 
-            this.Ссылка.HeaderText = "Ссылка";
-            this.Ссылка.Name = "Ссылка";
-            this.Ссылка.ReadOnly = true;
-            // 
             // HTMLParser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.ClientSize = new System.Drawing.Size(800, 458);
-            this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "HTMLParser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HTMLParser";
-            this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Transparent;
             this.Load += new System.EventHandler(this.HTMLParser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource)).EndInit();
