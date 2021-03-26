@@ -56,7 +56,7 @@ namespace HtmlParser
                     DBInformation.AddInformation(new string[] { comboBox1.Text, s.shopName, price.ToString(), date.ToString("yyyy-MM-dd HH:mm:ss"), s.link.ToString() });
                 }
             });
-
+            SearchBestPrice();
         }
 
         private void ВыходToolStripMenuItem_Click(object sender, EventArgs e)
@@ -199,6 +199,8 @@ namespace HtmlParser
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
+            dataGridView1.Rows.Clear();
+            panel2.Visible = false;
             string name = comboBox1.Text;
             string[] obj = DBObject.GetObjectByName(name);
 
@@ -312,5 +314,15 @@ namespace HtmlParser
                 cs.Show();
             }
         }
+
+        private void SearchBestPrice()
+        {
+            string[] str = DBInformation.GetBestPrice(comboBox1.Text);
+            labelShop.Text = str[0];
+            labelPrice.Text = str[1];
+            labelDataRequest.Text = str[2];
+            panel2.Visible = true;
+        }
+
     }
 }

@@ -60,6 +60,13 @@
             this.консольToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelDataRequest = new System.Windows.Forms.Label();
+            this.labelShop = new System.Windows.Forms.Label();
+            this.labelPrice = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -103,6 +110,7 @@
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage3.SuspendLayout();
@@ -117,6 +125,7 @@
             // 
             // ButtonParse
             // 
+            this.ButtonParse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonParse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonParse.ForeColor = System.Drawing.SystemColors.Control;
             this.ButtonParse.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -132,6 +141,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.comboBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -168,6 +178,9 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
@@ -236,7 +249,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(602, 48);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(175, 316);
+            this.listBox1.Size = new System.Drawing.Size(175, 186);
             this.listBox1.TabIndex = 6;
             // 
             // label1
@@ -304,6 +317,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Controls.Add(this.listBox1);
             this.tabPage1.Controls.Add(this.label1);
@@ -315,6 +329,87 @@
             this.tabPage1.Size = new System.Drawing.Size(789, 400);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Поиск";
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.labelDataRequest);
+            this.panel2.Controls.Add(this.labelShop);
+            this.panel2.Controls.Add(this.labelPrice);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Location = new System.Drawing.Point(602, 240);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(175, 120);
+            this.panel2.TabIndex = 10;
+            this.panel2.Visible = false;
+            // 
+            // labelDataRequest
+            // 
+            this.labelDataRequest.AutoSize = true;
+            this.labelDataRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDataRequest.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelDataRequest.Location = new System.Drawing.Point(3, 93);
+            this.labelDataRequest.Name = "labelDataRequest";
+            this.labelDataRequest.Size = new System.Drawing.Size(15, 16);
+            this.labelDataRequest.TabIndex = 13;
+            this.labelDataRequest.Text = "0";
+            // 
+            // labelShop
+            // 
+            this.labelShop.AutoSize = true;
+            this.labelShop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelShop.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelShop.Location = new System.Drawing.Point(3, 61);
+            this.labelShop.Name = "labelShop";
+            this.labelShop.Size = new System.Drawing.Size(15, 16);
+            this.labelShop.TabIndex = 12;
+            this.labelShop.Text = "0";
+            // 
+            // labelPrice
+            // 
+            this.labelPrice.AutoSize = true;
+            this.labelPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPrice.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelPrice.Location = new System.Drawing.Point(3, 29);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(15, 16);
+            this.labelPrice.TabIndex = 11;
+            this.labelPrice.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.ForeColor = System.Drawing.SystemColors.Control;
+            this.label7.Location = new System.Drawing.Point(3, 45);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(68, 16);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Магазин:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.ForeColor = System.Drawing.SystemColors.Control;
+            this.label6.Location = new System.Drawing.Point(3, 77);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 16);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Дата запроса:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(3, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(156, 16);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Наилучшая цена была:";
             // 
             // tabPage2
             // 
@@ -612,9 +707,12 @@
             // 
             // ДатаЗапроса
             // 
+            this.ДатаЗапроса.FillWeight = 200F;
             this.ДатаЗапроса.HeaderText = "Дата запроса";
+            this.ДатаЗапроса.MinimumWidth = 200;
             this.ДатаЗапроса.Name = "ДатаЗапроса";
             this.ДатаЗапроса.ReadOnly = true;
+            this.ДатаЗапроса.Width = 200;
             // 
             // Ссылка
             // 
@@ -688,6 +786,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
@@ -757,13 +857,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NameId;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameShop;
         private System.Windows.Forms.DataGridViewTextBoxColumn Url;
+        private System.Windows.Forms.ToolStripMenuItem консольToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Товар;
         private System.Windows.Forms.DataGridViewTextBoxColumn Компания;
         private System.Windows.Forms.DataGridViewTextBoxColumn Цена;
         private System.Windows.Forms.DataGridViewTextBoxColumn ДатаЗапроса;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ссылка;
-        private System.Windows.Forms.ToolStripMenuItem консольToolStripMenuItem;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label labelDataRequest;
+        private System.Windows.Forms.Label labelShop;
+        private System.Windows.Forms.Label labelPrice;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label2;
     }
 }
 

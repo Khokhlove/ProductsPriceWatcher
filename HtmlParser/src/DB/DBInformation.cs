@@ -53,5 +53,34 @@ namespace HtmlParser
                 }
             }
         }
+
+        public static string[] GetBestPrice(string str)
+        {
+            using (SqlConnection con = DB.GetConnection())
+            {
+                try
+                {
+                    con.Open();
+                    string[] selectedString = new string[] { };
+
+                    string sqlExpression = $"SELECT TOP 1 * FROM INFORMATION WHERE OBJECT = '{str}' order by Price asc";
+                    SqlCommand command = new SqlCommand(sqlExpression, con);
+
+                    SqlDataReader reader = command.ExecuteReader();
+                    List<string[]> l = new List<string[]>();
+                    if (reader.Read())
+                    {
+                        selectedString = new string[]{reader[2].ToString(), reader[3].ToString(), reader[4].ToString() };
+                    }
+                    con.Close();
+                    return selectedString;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Ошибка");
+                    return null;
+                }
+            }
+        }
     }
 }
