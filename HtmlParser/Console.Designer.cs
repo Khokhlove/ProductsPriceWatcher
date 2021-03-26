@@ -85,11 +85,12 @@
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
+            this.MinimizeBox = false;
             this.Name = "Console";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Консоль";
-            this.Load += new System.EventHandler(this.Console_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Console_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

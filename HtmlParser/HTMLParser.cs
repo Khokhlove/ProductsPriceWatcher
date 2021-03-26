@@ -22,7 +22,15 @@ namespace HtmlParser
         public HTMLParser()
         {
             InitializeComponent();
+            InitConsole();
             InitSearchTab();
+        }
+
+        void InitConsole()
+        {
+            cs = new Console();
+            new CConsole(cs);
+            cs.Hide();
         }
 
         private void Parse_Click(object sender, EventArgs e)
@@ -72,24 +80,45 @@ namespace HtmlParser
             DataGridView data = dataGridView2;
 
             if (data.Rows.Count > 0)
-                data.Rows.Clear();
-
-            using (SqlConnection con = DB.GetConnection())
             {
-                con.Open();
-
-                string sqlExpression = "SELECT * FROM Object INNER JOIN Shop ON (Object.Id = Shop.NameId)";
-
-                SqlCommand command = new SqlCommand(sqlExpression, con);
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    data.Rows.Add(new string[] { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString() });
-                }
-                con.Close();
+                data.Rows.Clear();
+                CConsole.GetInstance().Log("Грид очищен!");
             }
+
+            CConsole.GetInstance().Log("Делаю запрос к БД");
+            List<string[]> objects = GetObjectsPivot();
+
+            if (objects.Count > 0)
+            {
+                CConsole.GetInstance().LogSuccess("Данные получены !");
+                CConsole.GetInstance().Log($"Количество объектов: {objects.Count}");
+                objects.ForEach(o => data.Rows.Add(o));
+            }
+
+            List<string[]> GetObjectsPivot()
+            {
+                List<string[]> objs = new List<string[]>();
+
+                using (SqlConnection con = DB.GetConnection())
+                {
+                    con.Open();
+
+                    string sqlExpression = "SELECT * FROM Object INNER JOIN Shop ON (Object.Id = Shop.NameId)";
+
+                    SqlCommand command = new SqlCommand(sqlExpression, con);
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        objs.Add(new string[] { reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), reader[5].ToString() });
+                        
+                    }
+                    con.Close();
+                }
+
+                return objs;
+            }            
         }
 
         private void SaveBD_Click(object sender, EventArgs e)
@@ -102,13 +131,14 @@ namespace HtmlParser
                     DBObject.SetObject(Cells);
                     DBShop.SetShop(Cells);
                 }
-                MessageBox.Show("База обновлена!", "Выполнено");
-                cs.cCs.Output("Update Database.", 1, cs);
+                string msg = "База обновлена!";
+                MessageBox.Show(msg, "Выполнено");
+                CConsole.GetInstance().LogSuccess(msg);
                 rowIds.Clear();
             }
             catch(Exception ex)
             {
-                cs.cCs.Output($"Error:{ex.Message.ToString()} ", 1, cs);
+                CConsole.GetInstance().LogError($"{ex.Message.ToString()}");
                 return;
             }
 
@@ -137,7 +167,11 @@ namespace HtmlParser
                 SetPivotTable();
             }
             else
-                MessageBox.Show("Заполните все поля дибилы!", "Ошибка");
+            {
+                string msg = "Заполните все поля дибилы!";
+                CConsole.GetInstance().LogError(msg);
+                MessageBox.Show(msg, "Ошибка");
+            }
 
             void AvailibiltyCheck()
             {
@@ -149,7 +183,11 @@ namespace HtmlParser
                 }
 
                 if (DBShop.AddShop(new string[] { str[0], tBS, tBL }))
-                    MessageBox.Show($"Товар '{tBO}' добавлен в базу данных", "Выполнено");
+                {
+                    string msg = $"Товар '{tBO}' добавлен в базу данных";
+                    MessageBox.Show(msg, "Выполнено");
+                    CConsole.GetInstance().LogSuccess(msg);
+                }
             }
         }
         private void DataGridView2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -174,7 +212,9 @@ namespace HtmlParser
                 }
                 else
                 {
-                    MessageBox.Show("Перечень магазинов для данного товара не найден!", "Ошибка!");
+                    string msg = "Перечень магазинов для данного товара не найден!";
+                    CConsole.GetInstance().LogError(msg);
+                    MessageBox.Show(msg, "Ошибка!");
                 }
             }
         }
@@ -190,10 +230,16 @@ namespace HtmlParser
                     DBShop.DeleteShopByName(shopName);
                 }
                 SetPivotTable();
-                MessageBox.Show("Магазин(ы)  удален(ы)!", "Выполнено");
+                string msg = "Магазин(ы)  удален(ы)!";
+                CConsole.GetInstance().LogSuccess(msg);
+                MessageBox.Show(msg, "Выполнено");
             }
             else
-                MessageBox.Show("Не ожидал ошибки? Выбери строку для удаления, придурок.", "Ошибка!");
+            {
+                string msg = "Не ожидал ошибки? Выбери строку для удаления, придурок.";
+                CConsole.GetInstance().LogError(msg);
+                MessageBox.Show(msg, "Ошибка!");
+            }
         }
 
         void InitSearchTab()
@@ -202,10 +248,18 @@ namespace HtmlParser
 
             void SetProductsComboBox()
             {
-                if (comboBox1.Items.Count > 0) comboBox1.Items.Clear();
+                if (comboBox1.Items.Count > 0)
+                {
+                    comboBox1.Items.Clear();
+                    CConsole.GetInstance().Log("Очищен список товаров!");
+                }
                 List<string[]> products = DBObject.GetObjects();
-
-                products.ForEach(p => comboBox1.Items.Add(p[1]));
+                if (products.Count > 0)
+                {
+                    CConsole.GetInstance().LogSuccess("Список продуктов получен!");
+                    CConsole.GetInstance().Log($"Перечень товаров составляет: {products.Count} шт.");
+                    products.ForEach(p => comboBox1.Items.Add(p[1]));
+                }
             }
         }
 
@@ -216,10 +270,20 @@ namespace HtmlParser
 
         void InitHistoryTab()
         {
-            if (dataGridView3.Rows.Count > 0) dataGridView3.Rows.Clear();
+            if (dataGridView3.Rows.Count > 0)
+            {
+                dataGridView3.Rows.Clear();
+                CConsole.GetInstance().Log("Грид очищен!");
+            }
+
             List<string[]> history = DBInformation.GetHistory();
 
-            history.ForEach(h => dataGridView3.Rows.Add(h));
+            if (history.Count > 0)
+            {
+                CConsole.GetInstance().LogSuccess("Данные получены!");
+                CConsole.GetInstance().Log($"Количество строк: {history.Count}");
+                history.ForEach(h => dataGridView3.Rows.Add(h));
+            }             
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
