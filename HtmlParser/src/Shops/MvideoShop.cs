@@ -10,22 +10,30 @@ namespace HtmlParser
 
         public override int GetPrice()
         {
-            CQ dom = CQ.CreateFromUrl(this.link);
-            CQ priceNode = dom[".fl-pdp-price__current"];
-            if (priceNode.Length > 0)
+            try
             {
-                string s = "";
-                MatchCollection matches = Regex.Matches(priceNode.Text(), @"[\d]+");
-                foreach (Match m in matches)
+                CQ dom = CQ.CreateFromUrl(this.link);
+                CQ priceNode = dom[".fl-pdp-price__current"];
+                if (priceNode.Length > 0)
                 {
-                    s += m.Value;
+                    string s = "";
+                    MatchCollection matches = Regex.Matches(priceNode.Text(), @"[\d]+");
+                    foreach (Match m in matches)
+                    {
+                        s += m.Value;
+                    }
+                    if (s != "")
+                        return Convert.ToInt32(s);
+                    else
+                        return -1;
                 }
-                if (s != "")
-                    return Convert.ToInt32(s);
-                else
-                    return -1;
+                return -1;
             }
-            return -1;
+            catch(Exception e)
+            {
+                CConsole.GetInstance().LogError(e.Message);
+                return -1;
+            }
         }
     }
 }

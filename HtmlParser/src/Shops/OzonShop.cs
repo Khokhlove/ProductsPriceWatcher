@@ -9,21 +9,29 @@ namespace HtmlParser
 
         public override int GetPrice()
         {
-            CQ avelotDom = CQ.CreateFromUrl(this.link);
-            CQ avelotPriceNode = avelotDom[".c2h5.c2h6"];
-
-            if (avelotPriceNode.Length > 0)
+            try
             {
-                CQ str = avelotPriceNode.Find("span");
-                if (str.Length > 0)
+                CQ avelotDom = CQ.CreateFromUrl(this.link);
+                CQ avelotPriceNode = avelotDom[".c2h5.c2h6"];
+
+                if (avelotPriceNode.Length > 0)
                 {
-                    return Convert.ToInt32(str.Text().Replace(" ", "").Replace("₽", ""));
+                    CQ str = avelotPriceNode.Find("span");
+                    if (str.Length > 0)
+                    {
+                        return Convert.ToInt32(str.Text().Replace(" ", "").Replace("₽", ""));
+                    }
+                    return -1;
                 }
-                return -1;
-            }
             
 
-            return -1;
+                return -1;
+            }
+            catch (Exception e)
+            {
+                CConsole.GetInstance().LogError(e.Message);
+                return -1;
+            }
         }
     }
 }

@@ -9,14 +9,23 @@ namespace HtmlParser
 
         public override int GetPrice()
         {
-            CQ citilinkDom = CQ.CreateFromUrl(this.link);
-            CQ citilinPriceNode = citilinkDom[".ProductHeader__price-default_current-price"];
-            if (citilinPriceNode.Length > 0)
+            try
             {
-                return Convert.ToInt32(citilinPriceNode.Text().Trim().Replace(" ", ""));
-            }
+                CQ citilinkDom = CQ.CreateFromUrl(this.link);
+                CQ citilinPriceNode = citilinkDom[".ProductHeader__price-default_current-price"];
+                if (citilinPriceNode.Length > 0)
+                {
+                    return Convert.ToInt32(citilinPriceNode.Text().Trim().Replace(" ", ""));
+                }
 
-            return -1;
+                return -1;
+
+            }
+            catch(Exception e)
+            {
+                CConsole.GetInstance().LogError(e.Message);
+                return -1;
+            }
         }
     }
 }
