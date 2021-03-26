@@ -57,6 +57,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.консольToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -253,7 +254,8 @@
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem,
+            this.консольToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -277,6 +279,14 @@
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
+            // 
+            // консольToolStripMenuItem
+            // 
+            this.консольToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.консольToolStripMenuItem.Name = "консольToolStripMenuItem";
+            this.консольToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.консольToolStripMenuItem.Text = "Консоль";
+            this.консольToolStripMenuItem.Click += new System.EventHandler(this.КонсольToolStripMenuItem_Click);
             // 
             // tabControl1
             // 
@@ -753,6 +763,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Цена;
         private System.Windows.Forms.DataGridViewTextBoxColumn ДатаЗапроса;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ссылка;
+        private System.Windows.Forms.ToolStripMenuItem консольToolStripMenuItem;
     }
 }
 

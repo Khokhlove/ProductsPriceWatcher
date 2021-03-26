@@ -28,7 +28,12 @@ namespace HtmlParser
                 case "citilink":
                     return new CitilinkShop(url);
                 case "avelot":
-                    return new AvelotShop(url);
+                    return new OzonShop(url);
+                case "mvideo":
+                    return new MvideoShop(url);
+                case "ozon":
+                    return new OzonShop(url);
+                    
                 default:
                     return null;
             }

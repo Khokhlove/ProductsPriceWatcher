@@ -17,11 +17,11 @@ namespace HtmlParser
     {
         HashSet<int> rowIds = new HashSet<int>();
         List<string[]> shops = new List<string[]>();
+        public Console cs;
 
         public HTMLParser()
         {
             InitializeComponent();
-
             InitSearchTab();
         }
 
@@ -42,8 +42,11 @@ namespace HtmlParser
             {
                 DateTime date = DateTime.Now;
                 int price = s.GetPrice();
-                dataGridView1.Rows.Add(new string[] { s.shopName, price.ToString(), date.ToString("G") });
-                DBInformation.AddInformation(new string[] { comboBox1.Text, s.shopName, price.ToString(), date.ToString("yyyy-MM-dd HH:mm:ss"), shops[1].ToString() });
+                if (price != -1)
+                {
+                    dataGridView1.Rows.Add(new string[] { s.shopName, price.ToString(), date.ToString("G") });
+                    DBInformation.AddInformation(new string[] { comboBox1.Text, s.shopName, price.ToString(), date.ToString("yyyy-MM-dd HH:mm:ss"), s.link.ToString() });
+                }
             });
 
         }
@@ -51,16 +54,6 @@ namespace HtmlParser
         private void ВыходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void ДобавитьТоварToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Editor.CreateMenu();
-        }
-
-        private void ИзменитьТоварToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Editor.EditMenu();
         }
 
         private void HTMLParser_Load(object sender, EventArgs e)
@@ -110,10 +103,12 @@ namespace HtmlParser
                     DBShop.SetShop(Cells);
                 }
                 MessageBox.Show("База обновлена!", "Выполнено");
+                cs.cCs.Output("Update Database.", 1, cs);
                 rowIds.Clear();
             }
-            catch
+            catch(Exception ex)
             {
+                cs.cCs.Output($"Error:{ex.Message.ToString()} ", 1, cs);
                 return;
             }
 
@@ -239,6 +234,19 @@ namespace HtmlParser
             int i = tabControl1.SelectedIndex;
 
             if (i < tabs.Length) tabs[i].Invoke();
+        }
+
+        private void КонсольToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (cs == null)
+            {
+                cs = new Console();
+                cs.Show();
+            }
+            else
+            {
+                cs.Show();
+            }
         }
     }
 }
