@@ -74,7 +74,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tBLink = new System.Windows.Forms.TextBox();
-            this.tBShop = new System.Windows.Forms.TextBox();
             this.tBObject = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -102,6 +101,7 @@
             this.informationTableAdapter = new HtmlParser.Database1DataSet1TableAdapters.InformationTableAdapter();
             this.objectTableAdapter1 = new HtmlParser.Database1DataSet2TableAdapters.ObjectTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectBindingSource1)).BeginInit();
@@ -414,13 +414,13 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.tabPage2.Controls.Add(this.comboBox2);
             this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.tBLink);
-            this.tabPage2.Controls.Add(this.tBShop);
             this.tabPage2.Controls.Add(this.tBObject);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.button1);
@@ -494,15 +494,6 @@
             this.tBLink.Name = "tBLink";
             this.tBLink.Size = new System.Drawing.Size(169, 20);
             this.tBLink.TabIndex = 8;
-            // 
-            // tBShop
-            // 
-            this.tBShop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.tBShop.ForeColor = System.Drawing.SystemColors.Control;
-            this.tBShop.Location = new System.Drawing.Point(617, 210);
-            this.tBShop.Name = "tBShop";
-            this.tBShop.Size = new System.Drawing.Size(169, 20);
-            this.tBShop.TabIndex = 7;
             // 
             // tBObject
             // 
@@ -758,6 +749,25 @@
             this.panel1.Size = new System.Drawing.Size(800, 432);
             this.panel1.TabIndex = 11;
             // 
+            // comboBox2
+            // 
+            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.comboBox2.ForeColor = System.Drawing.SystemColors.Control;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Avelot",
+            "Citlink",
+            "Eldorado",
+            "Mvideo",
+            "Ozon",
+            "Megafon",
+            "Mts"});
+            this.comboBox2.Location = new System.Drawing.Point(616, 210);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(170, 21);
+            this.comboBox2.TabIndex = 14;
+            // 
             // HTMLParser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -838,7 +848,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tBLink;
-        private System.Windows.Forms.TextBox tBShop;
         private System.Windows.Forms.TextBox tBObject;
         private Database1DataSet database1DataSet;
         private System.Windows.Forms.BindingSource objectBindingSource;
@@ -871,6 +880,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }
 

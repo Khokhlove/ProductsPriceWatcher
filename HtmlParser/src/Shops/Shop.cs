@@ -35,6 +35,10 @@ namespace HtmlParser
                     return new OzonShop(url);
                 case "eldorado":
                     return new EldoradoShop(url);
+                case "megafon":
+                    return new MegafonShop(url);
+                case "mts":
+                    return new MtsShop(url);
 
                 default:
                     return null;

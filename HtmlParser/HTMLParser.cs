@@ -157,13 +157,13 @@ namespace HtmlParser
         private void AddDB_Click(object sender, EventArgs e)
         {
             string tBO = tBObject.Text.Trim();
-            string tBS = tBShop.Text.Trim();
+            string tBS = comboBox2.Text.Trim();
             string tBL = tBLink.Text.Trim();
 
             if (tBO != "" && tBS != "" && tBL != "")
             {
                 AvailibiltyCheck();
-                tBShop.Text = "";
+                comboBox2.Text = "";
                 tBLink.Text = "";
                 SetPivotTable();
             }
