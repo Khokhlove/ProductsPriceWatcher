@@ -33,7 +33,9 @@ namespace HtmlParser
                     return new MvideoShop(url);
                 case "ozon":
                     return new OzonShop(url);
-                    
+                case "eldorado":
+                    return new EldoradoShop(url);
+
                 default:
                     return null;
             }

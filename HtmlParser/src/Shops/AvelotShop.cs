@@ -11,11 +11,11 @@ namespace HtmlParser
         {
             try
             {
-                CQ avelotDom = CQ.CreateFromUrl(this.link);
-                CQ avelotPriceNode = avelotDom["#our_price_display"];
-                if (avelotPriceNode.Length > 0)
+                CQ dom = CQ.CreateFromUrl(this.link);
+                CQ priceNode = dom["#our_price_display"];
+                if (priceNode.Length > 0)
                 {
-                    return Convert.ToInt32(avelotPriceNode.Attr("content"));
+                    return Convert.ToInt32(priceNode.Attr("content"));
                 }
 
                 return -1;

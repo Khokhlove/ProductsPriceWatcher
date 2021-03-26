@@ -61,7 +61,6 @@ namespace HtmlParser
                 try
                 {
                     con.Open();
-                    string[] selectedString = new string[] { };
 
                     string sqlExpression = $"SELECT TOP 1 * FROM INFORMATION WHERE OBJECT = '{str}' order by Price asc";
                     SqlCommand command = new SqlCommand(sqlExpression, con);
@@ -70,10 +69,10 @@ namespace HtmlParser
                     List<string[]> l = new List<string[]>();
                     if (reader.Read())
                     {
-                        selectedString = new string[]{reader[2].ToString(), reader[3].ToString(), reader[4].ToString() };
+                        return new string[]{reader[2].ToString(), reader[3].ToString(), reader[4].ToString() };
                     }
                     con.Close();
-                    return selectedString;
+                    return null;
                 }
                 catch (Exception e)
                 {

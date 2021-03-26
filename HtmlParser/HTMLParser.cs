@@ -52,6 +52,7 @@ namespace HtmlParser
                 int price = s.GetPrice();
                 if (price != -1)
                 {
+                    CConsole.GetInstance().LogSuccess($"Цена на {s.shopName} найдена!");
                     dataGridView1.Rows.Add(new string[] { s.shopName, price.ToString(), date.ToString("G") });
                     DBInformation.AddInformation(new string[] { comboBox1.Text, s.shopName, price.ToString(), date.ToString("yyyy-MM-dd HH:mm:ss"), s.link.ToString() });
                 }
@@ -318,10 +319,18 @@ namespace HtmlParser
         private void SearchBestPrice()
         {
             string[] str = DBInformation.GetBestPrice(comboBox1.Text);
-            labelShop.Text = str[0];
-            labelPrice.Text = str[1];
-            labelDataRequest.Text = str[2];
-            panel2.Visible = true;
+            if (str != null)
+            {
+                labelShop.Text = str[0];
+                labelPrice.Text = str[1];
+                labelDataRequest.Text = str[2];
+                panel2.Visible = true;
+                CConsole.GetInstance().LogSuccess($"Выведена наилучшая цена для товара '{comboBox1.Text}'");
+            }
+            else
+            {
+                CConsole.GetInstance().LogWarning("Наилучшая цена не была найдена!");
+            }
         }
 
     }

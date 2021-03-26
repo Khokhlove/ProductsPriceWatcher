@@ -11,11 +11,11 @@ namespace HtmlParser
         {
             try
             {
-                CQ citilinkDom = CQ.CreateFromUrl(this.link);
-                CQ citilinPriceNode = citilinkDom[".ProductHeader__price-default_current-price"];
-                if (citilinPriceNode.Length > 0)
+                CQ dom = CQ.CreateFromUrl(this.link);
+                CQ priceNode = dom[".ProductHeader__price-default_current-price"];
+                if (priceNode.Length > 0)
                 {
-                    return Convert.ToInt32(citilinPriceNode.Text().Trim().Replace(" ", ""));
+                    return Convert.ToInt32(priceNode.Text().Trim().Replace(" ", ""));
                 }
 
                 return -1;

@@ -102,6 +102,7 @@
       <DependentUpon>HTMLParser.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Shops\AvelotShop.cs" />
+    <Compile Include="src\Shops\EldoradoShop.cs" />
     <Compile Include="src\Shops\OzonShop.cs" />
     <Compile Include="src\Shops\MvideoShop.cs" />
     <Compile Include="src\Shops\CitilinkShop.cs" />
