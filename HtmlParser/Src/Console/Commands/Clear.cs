@@ -5,7 +5,7 @@ namespace HtmlParser.Src.Console.Commands
     class Clear : Command
     {
         HtmlParser.Console console;
-        public Clear(HtmlParser.Console console) : base("clear", "")
+        public Clear(HtmlParser.Console console) : base("clear", description: "Очистка консоли.")
         {
             this.console = console;
         }

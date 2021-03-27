@@ -65,7 +65,7 @@ namespace HtmlParser
             {
                 new Clear(this),
                 new HtmlParser.Src.Console.Commands.Help(this),
-                new print_test()
+                new Print()
             };
         }
 

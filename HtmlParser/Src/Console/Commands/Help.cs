@@ -10,7 +10,7 @@ namespace HtmlParser.Src.Console.Commands
     class Help : Command
     {
         HtmlParser.Console console;
-        public Help(HtmlParser.Console console) : base("help", "")
+        public Help(HtmlParser.Console console) : base("help", description: "Показать перечень команд консоли.")
         {
             this.console = console;
         }

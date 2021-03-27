@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace HtmlParser.Src.Console.Commands
 {
-    class print_test : Command
+    class Print : Command
     {
-        public print_test() : base("print_test", "text: string") {}
+        public Print() : base("print", "text: string", "Напечатать текст в консоль", test: true) {}
 
         public override void Execute(string[] args)
         {
