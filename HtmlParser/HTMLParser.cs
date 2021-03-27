@@ -30,6 +30,7 @@ namespace HtmlParser
         {
             cs = new Console();
             new CConsole(cs);
+            CConsole.GetInstance().Log("Введите help, чтобы получить информацию о доступных командах!");
             cs.Hide();
         }
 
