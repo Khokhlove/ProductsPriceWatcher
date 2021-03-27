@@ -95,6 +95,7 @@
     <Compile Include="Src\Console\Commands\Command.cs" />
     <Compile Include="Src\Console\Commands\Help.cs" />
     <Compile Include="Src\Console\Commands\print_test.cs" />
+    <Compile Include="Src\Console\Commands\Commands.cs" />
     <Compile Include="Src\DB\DBconnection.cs" />
     <Compile Include="Src\DB\DBObject.cs" />
     <Compile Include="Src\DB\DBInformation.cs" />

@@ -8,7 +8,6 @@ namespace HtmlParser
     public partial class Console : Form
     {
         public ListView list;
-
         public List<Command> commands;
 
         public Console()
@@ -25,15 +24,28 @@ namespace HtmlParser
             if (t.Length > 0)
             {
                 ExecuteCommand(t);
+                PreviousCommands.Add(t);
                 tb.Clear();
             }
         }
 
         private void EnterTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            switch(e.KeyCode)
             {
-                Button1_Click(this, new EventArgs());
+                case Keys.Enter:
+                    Button1_Click(this, new EventArgs());
+                    break;
+                case Keys.Up:
+                    e.Handled = true;
+                    string prevCommand = PreviousCommands.GetPrevious();
+                    textBox1.Text = prevCommand;
+                    break;
+                case Keys.Down:
+                    e.Handled = true;
+                    string nextCommand = PreviousCommands.GetNext();
+                    textBox1.Text = nextCommand;
+                    break;
             }
         }
 

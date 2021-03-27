@@ -31,6 +31,8 @@ namespace HtmlParser
             cs = new Console();
             new CConsole(cs);
             CConsole.GetInstance().Log("Введите help, чтобы получить информацию о доступных командах!");
+            CConsole.GetInstance().Log("Стрелки ↑ и ↓ для выбора ранее вызванных команд!");
+            CConsole.GetInstance().Log(" ");
             cs.Hide();
         }
 
