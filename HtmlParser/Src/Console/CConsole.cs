@@ -18,24 +18,28 @@ namespace HtmlParser
             return instance;
         }
 
-        public void LogSuccess(string str)
+        public CConsole LogSuccess(string str)
         {
             Output(str, 1);
+            return instance;
         }
 
-        public void LogWarning(string str)
+        public CConsole LogWarning(string str)
         {
             Output(str, 4);
+            return instance;
         }
 
-        public void LogError(string str)
+        public CConsole LogError(string str)
         {
             Output(str, 2);
+            return instance;
         }
 
-        public void Log(string str)
+        public CConsole Log(string str)
         {
             Output(str, 3);
+            return instance;
         }
 
         public CConsole(Console console)

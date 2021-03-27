@@ -10,6 +10,8 @@ namespace HtmlParser
         public ListView list;
         public List<Command> commands;
 
+        public CConsole cc = CConsole.GetInstance();
+
         public Console()
         {
             InitializeComponent();
@@ -92,22 +94,22 @@ namespace HtmlParser
                         }
                         else
                         {
-                            CConsole.GetInstance().LogError($"Команда '{name}' равна null!");
+                            cc.LogError($"Команда '{name}' равна null!");
                         }
                     }
                     else
                     {
-                        CConsole.GetInstance().LogError($"Команда '{name}' не найдена! Введите help, чтобы получить перечень доступных команд.");
+                        cc.LogError($"Команда '{name}' не найдена! Введите help, чтобы получить перечень доступных команд.");
                     }
                 }
                 else
                 {
-                    CConsole.GetInstance().LogError("Название команды не опознано!");
+                    cc.LogError("Название команды не опознано!");
                 }
             }
             else
             {
-                CConsole.GetInstance().LogError("Нет аргументов!");
+                cc.LogError("Нет аргументов!");
             }
         }
     }

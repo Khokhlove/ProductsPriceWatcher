@@ -17,7 +17,8 @@ namespace HtmlParser
     {
         HashSet<int> rowIds = new HashSet<int>();
         List<string[]> shops = new List<string[]>();
-        public Console cs;
+        public Console console;
+        public CConsole cc;
 
         public HTMLParser()
         {
@@ -28,12 +29,13 @@ namespace HtmlParser
 
         void InitConsole()
         {
-            cs = new Console();
-            new CConsole(cs);
-            CConsole.GetInstance().Log("Введите help, чтобы получить информацию о доступных командах!");
-            CConsole.GetInstance().Log("Стрелки ↑ и ↓ для выбора ранее вызванных команд!");
-            CConsole.GetInstance().Log(" ");
-            cs.Hide();
+            console = new Console();
+            new CConsole(console);
+            cc = CConsole.GetInstance();
+            cc.Log("Введите help, чтобы получить информацию о доступных командах!")
+                .Log("Стрелки ↑ и ↓ для выбора ранее вызванных команд!")
+                .Log(" ");
+            console.Hide();
         }
 
         private void Parse_Click(object sender, EventArgs e)
@@ -55,7 +57,7 @@ namespace HtmlParser
                 int price = s.GetPrice();
                 if (price != -1)
                 {
-                    CConsole.GetInstance().LogSuccess($"Цена на {s.shopName} найдена!");
+                    cc.LogSuccess($"Цена на {s.shopName} найдена!");
                     dataGridView1.Rows.Add(new string[] { s.shopName, price.ToString(), date.ToString("G") });
                     DBInformation.AddInformation(new string[] { comboBox1.Text, s.shopName, price.ToString(), date.ToString("yyyy-MM-dd HH:mm:ss"), s.link.ToString() });
                 }
@@ -86,16 +88,16 @@ namespace HtmlParser
             if (data.Rows.Count > 0)
             {
                 data.Rows.Clear();
-                CConsole.GetInstance().Log("Грид очищен!");
+                cc.Log("Грид очищен!");
             }
 
-            CConsole.GetInstance().Log("Делаю запрос к БД");
+            cc.Log("Делаю запрос к БД");
             List<string[]> objects = GetObjectsPivot();
 
             if (objects.Count > 0)
             {
-                CConsole.GetInstance().LogSuccess("Данные получены !");
-                CConsole.GetInstance().Log($"Количество объектов: {objects.Count}");
+                cc.LogSuccess("Данные получены !")
+                    .Log($"Количество объектов: {objects.Count}");
                 objects.ForEach(o => data.Rows.Add(o));
             }
 
@@ -137,12 +139,12 @@ namespace HtmlParser
                 }
                 string msg = "База обновлена!";
                 MessageBox.Show(msg, "Выполнено");
-                CConsole.GetInstance().LogSuccess(msg);
+                cc.LogSuccess(msg);
                 rowIds.Clear();
             }
             catch(Exception ex)
             {
-                CConsole.GetInstance().LogError($"{ex.Message.ToString()}");
+                cc.LogError($"{ex.Message.ToString()}");
                 return;
             }
 
@@ -173,7 +175,7 @@ namespace HtmlParser
             else
             {
                 string msg = "Заполните все поля дибилы!";
-                CConsole.GetInstance().LogError(msg);
+                cc.LogError(msg);
                 MessageBox.Show(msg, "Ошибка");
             }
 
@@ -190,7 +192,7 @@ namespace HtmlParser
                 {
                     string msg = $"Товар '{tBO}' добавлен в базу данных";
                     MessageBox.Show(msg, "Выполнено");
-                    CConsole.GetInstance().LogSuccess(msg);
+                    cc.LogSuccess(msg);
                 }
             }
         }
@@ -219,7 +221,7 @@ namespace HtmlParser
                 else
                 {
                     string msg = "Перечень магазинов для данного товара не найден!";
-                    CConsole.GetInstance().LogError(msg);
+                    cc.LogError(msg);
                     MessageBox.Show(msg, "Ошибка!");
                 }
             }
@@ -237,13 +239,13 @@ namespace HtmlParser
                 }
                 SetPivotTable();
                 string msg = "Магазин(ы)  удален(ы)!";
-                CConsole.GetInstance().LogSuccess(msg);
+                cc.LogSuccess(msg);
                 MessageBox.Show(msg, "Выполнено");
             }
             else
             {
                 string msg = "Не ожидал ошибки? Выбери строку для удаления, придурок.";
-                CConsole.GetInstance().LogError(msg);
+                cc.LogError(msg);
                 MessageBox.Show(msg, "Ошибка!");
             }
         }
@@ -257,13 +259,13 @@ namespace HtmlParser
                 if (comboBox1.Items.Count > 0)
                 {
                     comboBox1.Items.Clear();
-                    CConsole.GetInstance().Log("Очищен список товаров!");
+                    cc.Log("Очищен список товаров!");
                 }
                 List<string[]> products = DBObject.GetObjects();
                 if (products.Count > 0)
                 {
-                    CConsole.GetInstance().LogSuccess("Список продуктов получен!");
-                    CConsole.GetInstance().Log($"Перечень товаров составляет: {products.Count} шт.");
+                    cc.LogSuccess("Список продуктов получен!")
+                        .Log($"Перечень товаров составляет: {products.Count} шт.");
                     products.ForEach(p => comboBox1.Items.Add(p[1]));
                 }
             }
@@ -279,15 +281,15 @@ namespace HtmlParser
             if (dataGridView3.Rows.Count > 0)
             {
                 dataGridView3.Rows.Clear();
-                CConsole.GetInstance().Log("Грид очищен!");
+                cc.Log("Грид очищен!");
             }
 
             List<string[]> history = DBInformation.GetHistory();
 
             if (history.Count > 0)
             {
-                CConsole.GetInstance().LogSuccess("Данные получены!");
-                CConsole.GetInstance().Log($"Количество строк: {history.Count}");
+                cc.LogSuccess("Данные получены!")
+                    .Log($"Количество строк: {history.Count}");
                 history.ForEach(h => dataGridView3.Rows.Add(h));
             }             
         }
@@ -308,14 +310,14 @@ namespace HtmlParser
 
         private void КонсольToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (cs == null)
+            if (console == null)
             {
-                cs = new Console();
-                cs.Show();
+                console = new Console();
+                console.Show();
             }
             else
             {
-                cs.Show();
+                console.Show();
             }
         }
 
@@ -328,11 +330,11 @@ namespace HtmlParser
                 labelPrice.Text = str[1];
                 labelDataRequest.Text = str[2];
                 panel2.Visible = true;
-                CConsole.GetInstance().LogSuccess($"Выведена наилучшая цена для товара '{comboBox1.Text}'");
+                cc.LogSuccess($"Выведена наилучшая цена для товара '{comboBox1.Text}'");
             }
             else
             {
-                CConsole.GetInstance().LogWarning("Наилучшая цена не была найдена!");
+                cc.LogWarning("Наилучшая цена не была найдена!");
             }
         }
 
