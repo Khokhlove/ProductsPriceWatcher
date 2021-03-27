@@ -8,9 +8,9 @@ namespace HtmlParser
     public partial class Console : Form
     {
         public ListView list;
-        public List<Command> commands;
 
         public CConsole cc = CConsole.GetInstance();
+        public ConsoleCommands commands = ConsoleCommands.GetInstance();
 
         public Console()
         {
@@ -25,8 +25,7 @@ namespace HtmlParser
             string t = tb.Text;
             if (t.Length > 0)
             {
-                ExecuteCommand(t);
-                PreviousCommands.Add(t);
+                commands.ExecuteCommand(t);
                 tb.Clear();
             }
         }
@@ -40,13 +39,13 @@ namespace HtmlParser
                     break;
                 case Keys.Up:
                     e.Handled = true;
-                    string prevCommand = PreviousCommands.GetPrevious();
+                    string prevCommand = commands.GetPrevious();
                     textBox1.Text = prevCommand;
                     textBox1.SelectionStart = prevCommand.Length;
                     break;
                 case Keys.Down:
                     e.Handled = true;
-                    string nextCommand = PreviousCommands.GetNext();
+                    string nextCommand = commands.GetNext();
                     textBox1.Text = nextCommand;
                     textBox1.SelectionStart = nextCommand.Length;
                     break;
@@ -61,58 +60,14 @@ namespace HtmlParser
 
         void InitConsoleCommands()
         {
-            commands = new List<Command>()
+            List<Command> cmnds = new List<Command>()
             {
                 new Clear(this),
                 new HtmlParser.Src.Console.Commands.Help(this),
                 new Print()
             };
-        }
 
-        void ExecuteCommand(string commandString)
-        {
-            string[] strs = commandString.Split(' ');
-            if (strs.Length > 0)
-            {
-                string name = strs[0];
-                if (name.Length > 0)
-                {
-                    Command command = commands.Find(p => p.Name == name);
-                    if (command != null)
-                    {
-                        if (command != null)
-                        {
-                            string[] args = new string[] { };
-                            if (strs.Length > 1)
-                            {
-                                args = new string[strs.Length - 1];
-                                for (int i = 1; i < strs.Length; i++)
-                                {
-                                    args[i - 1] = strs[i];
-                                }
-                            }
-
-                            command.Execute(args);
-                        }
-                        else
-                        {
-                            cc.LogError($"Команда '{name}' равна null!");
-                        }
-                    }
-                    else
-                    {
-                        cc.LogError($"Команда '{name}' не найдена! Введите help, чтобы получить перечень доступных команд.");
-                    }
-                }
-                else
-                {
-                    cc.LogError("Название команды не опознано!");
-                }
-            }
-            else
-            {
-                cc.LogError("Нет аргументов!");
-            }
+            commands.AddCommands(cmnds);
         }
     }
 }

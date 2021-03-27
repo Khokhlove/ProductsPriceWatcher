@@ -25,7 +25,7 @@ namespace HtmlParser.Src.Console.Commands
                 {
                     c.Log(" ");
                     c.Log("Доступные команды:");
-                    console.commands.ForEach(command => c.Log(command.Signature));
+                    ConsoleCommands.GetInstance().Commands.ForEach(command => c.Log(command.Signature));
                 }
                 else
                 {
