@@ -42,11 +42,13 @@ namespace HtmlParser
                     e.Handled = true;
                     string prevCommand = PreviousCommands.GetPrevious();
                     textBox1.Text = prevCommand;
+                    textBox1.SelectionStart = prevCommand.Length;
                     break;
                 case Keys.Down:
                     e.Handled = true;
                     string nextCommand = PreviousCommands.GetNext();
                     textBox1.Text = nextCommand;
+                    textBox1.SelectionStart = nextCommand.Length;
                     break;
             }
         }
