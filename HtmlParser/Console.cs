@@ -1,29 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using HtmlParser.Src.Console.Commands;
 
 namespace HtmlParser
 {
     public partial class Console : Form
     {
         public ListView list;
+
+        public List<Command> commands;
+
         public Console()
         {
             InitializeComponent();
             list = listView1;
+            InitConsoleCommands();
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            TextBox t = textBox1;
-            CConsole.GetInstance().Log(t.Text);
-            t.Clear();
+            TextBox tb = textBox1;
+            string t = tb.Text;
+            if (t.Length > 0)
+            {
+                ExecuteCommand(t);
+                tb.Clear();
+            }
         }
 
         private void EnterTextBox_KeyDown(object sender, KeyEventArgs e)
@@ -38,6 +41,62 @@ namespace HtmlParser
         {
             e.Cancel = true;
             this.Hide();
+        }
+
+        void InitConsoleCommands()
+        {
+            commands = new List<Command>()
+            {
+                new Clear(this),
+                new HtmlParser.Src.Console.Commands.Help(this),
+                new print_test()
+            };
+        }
+
+        void ExecuteCommand(string commandString)
+        {
+            string[] strs = commandString.Split(' ');
+            if (strs.Length > 0)
+            {
+                string name = strs[0];
+                if (name.Length > 0)
+                {
+                    Command command = commands.Find(p => p.Name == name);
+                    if (command != null)
+                    {
+                        if (command != null)
+                        {
+                            string[] args = new string[] { };
+                            if (strs.Length > 1)
+                            {
+                                args = new string[strs.Length - 1];
+                                for (int i = 1; i < strs.Length; i++)
+                                {
+                                    args[i - 1] = strs[i];
+                                }
+                            }
+
+                            command.Execute(args);
+                        }
+                        else
+                        {
+                            CConsole.GetInstance().LogError($"Команда '{name}' равна null!");
+                        }
+                    }
+                    else
+                    {
+                        CConsole.GetInstance().LogError($"Команда '{name}' не найдена! Введите help, чтобы получить перечень доступных команд.");
+                    }
+                }
+                else
+                {
+                    CConsole.GetInstance().LogError("Название команды не опознано!");
+                }
+            }
+            else
+            {
+                CConsole.GetInstance().LogError("Нет аргументов!");
+            }
         }
     }
 }
