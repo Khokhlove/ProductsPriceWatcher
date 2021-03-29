@@ -17,6 +17,7 @@ namespace HtmlParser
     {
         HashSet<int> rowIds = new HashSet<int>();
         List<string[]> shops = new List<string[]>();
+        List<string[]> failedParsings = new List<string[]>();
         public Console console;
         public CConsole cc;
 
@@ -41,8 +42,15 @@ namespace HtmlParser
         private void Parse_Click(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count > 0) dataGridView1.Rows.Clear();
+
+            ParsePrices(this.shops, s => { });
+            SearchBestPrice();
+        }
+
+        void ParsePrices(List<string[]> shopsRaw, Action<Shop> callback)
+        {
             List<Shop> shops = new List<Shop>();
-            this.shops.ForEach(s =>
+            shopsRaw.ForEach(s =>
             {
                 Shop shop = Shop.GetShop(s);
                 if (shop != null)
@@ -60,9 +68,22 @@ namespace HtmlParser
                     cc.LogSuccess($"Цена на {s.shopName} найдена!");
                     dataGridView1.Rows.Add(new string[] { s.shopName, price.ToString(), date.ToString("G") });
                     DBInformation.AddInformation(new string[] { comboBox1.Text, s.shopName, price.ToString(), date.ToString("yyyy-MM-dd HH:mm:ss"), s.link.ToString() });
+                    callback(s);
+                }
+                else
+                {
+                    string[] shopRaw = shopsRaw.Find(raw => raw[3] == s.link);
+                    if (shopsRaw != null)
+                    {
+                        if (!failedParsings.Contains(shopRaw))
+                        {
+                            failedParsings.Add(shopRaw);
+                            cc.LogError($"Произошла ошибка при парсинге '{s.shopName}!'");
+                            cc.LogError($"Информация о данном магазине добавлена во вкладку 'Фейлы'");
+                        }
+                    }
                 }
             });
-            SearchBestPrice();
         }
 
         private void ВыходToolStripMenuItem_Click(object sender, EventArgs e)
@@ -294,13 +315,24 @@ namespace HtmlParser
             }             
         }
 
+        void InitFailedTab()
+        {
+            if (dataGridView4.Rows.Count > 0) dataGridView4.Rows.Clear();
+
+            this.failedParsings.ForEach(f =>
+            {
+                dataGridView4.Rows.Add(new string[] { f[0], f[1], f[2], f[3] });
+            });
+        }
+
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Action[] tabs = new Action[]
             {
                 InitSearchTab,
                 InitUpdateDBTab,
-                InitHistoryTab
+                InitHistoryTab,
+                InitFailedTab
             };
 
             int i = tabControl1.SelectedIndex;
@@ -338,5 +370,15 @@ namespace HtmlParser
             }
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            List<Shop> shops = new List<Shop>();
+            ParsePrices(this.failedParsings, s => shops.Add(s));
+            shops.ForEach(s =>
+            {
+                int i = this.failedParsings.FindIndex(f => f[3] == s.link);
+                this.failedParsings.RemoveAt(i);
+            });
+        }
     }
 }
